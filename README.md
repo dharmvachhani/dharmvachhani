@@ -34,24 +34,12 @@
 
 ---
 
-## 📈 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=dharmvachhani&show_icons=true&theme=github_dark&hide_border=true" alt="Dharm's GitHub stats" />
-  <br />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=dharmvachhani&theme=github-dark&hide_border=true" alt="Dharm's GitHub streak" />
-  <br />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=dharmvachhani&layout=compact&theme=github_dark&hide_border=true" alt="Top Languages" />
-</p>
-
----
-
 ## 🌍 Connect with Me
 
 - 🔗 Portfolio: [https://dharmvachhani.dev](https://dharmvachhani.dev) *(if you have one, or replace with LinkedIn)*
 - 💼 LinkedIn: [linkedin.com/in/dharmvachhani](https://linkedin.com/in/dharmvachhani)
 - 💬 Telegram: [@dharmvachhani](https://t.me/dharmvachhani)
-- ✉️ Email: dharmvachhani@gmail.com
+- ✉️ Email: dharmvachhani256@gmail.com
 
 ---
 
