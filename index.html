@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dharm Vachhani | Software Engineer</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #0f172a;
+      color: #e0e7ff;
+      font-family: 'Inter', sans-serif;
+    }
+    /* Section Divider */
+    .section-divider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(90deg, #06b6d4 0%, #8b5cf6 50%, #06b6d4 100%);
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+    /* Section Titles */
+    h2 {
+      position: relative;
+      display: inline-block;
+      color: #8b5cf6;
+      font-weight: 700;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+      border-radius: 5px;
+      transition: width 0.4s ease;
+    }
+    h2:hover::after {
+      width: 100%;
+    }
+    /* Tech Icon Tooltip */
+    .tech-icon {
+      position: relative;
+      cursor: pointer;
+    }
+    .tech-icon:hover::after {
+      content: attr(data-name);
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #8b5cf6;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 0.875rem;
+      font-weight: 600;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    /* Hero Background Pulse */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, #22d3ee44, transparent 70%);
+      filter: blur(100px);
+      animation: pulse 6s ease-in-out infinite;
+      z-index: 0;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    /* Tech Card Hover */
+    .tech-card:hover {
+      box-shadow: 0 15px 30px #8b5cf6aa;
+      transform: translateY(-8px);
+    }
+    /* Button Hover */
+    button[type="submit"]:hover {
+      background: #7c3aed;
+      box-shadow: 0 0 15px #7c3aedcc;
+    }
+    /* Portfolio Cards */
+    .portfolio-card {
+      background: #1e293b;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px #8b5cf6aa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px #22d3eecc;
+    }
+    /* Smooth fade + slide for AOS */
+    [data-aos].aos-animate {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    [data-aos] {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Mobile Friendly Adjustments */
+    /* Hero text smaller on small devices */
+    @media (max-width: 640px) {
+      #hero h1 {
+        font-size: 2.5rem !important; /* Tailwind 5xl -> ~3rem, reducing */
+      }
+      #hero p {
+        font-size: 1rem !important;
+      }
+      #hero img {
+        width: 96px !important; /* 24rem */
+        height: 96px !important;
+      }
+    }
+
+    /* Technical Expertise grid stacked on mobile */
+    @media (max-width: 768px) {
+      #expertise .grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Tech Stack icons smaller and wrap nicely */
+    #techstack .flex {
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 0.75rem !important;
+    }
+    #techstack .tech-icon {
+      font-size: 3rem !important; /* smaller on mobile */
+    }
+    @media (max-width: 640px) {
+      #techstack .tech-icon {
+        font-size: 2.25rem !important;
+      }
+    }
+
+    /* Contact form inputs full width and spacing */
+    @media (max-width: 640px) {
+      #contact form input,
+      #contact form textarea,
+      #contact form button {
+        font-size: 1rem !important;
+      }
+      #contact form {
+        padding: 0 1rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section id="hero" class="py-20 px-6 text-center relative overflow-hidden bg-gradient-to-br from-cyan-900 to-purple-900">
+  <div class="hero-bg"></div>
+  <div class="relative max-w-6xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-aos-duration="900">
+    <img
+      src="https://dharm.dev/pic.jpg"
+      alt="Dharm Avatar"
+      class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-cyan-400 shadow-lg"
+    />
+    <h1 id="hero-title" class="text-5xl md:text-6xl font-bold text-cyan-400 mb-2 drop-shadow-lg">Dharm Vachhani</h1>
+    <p class="text-xl text-gray-300 mb-6">Software Engineer | Backend Specialist | AWS Certified</p>
+    <p class="max-w-2xl mx-auto text-gray-300 leading-relaxed">
+      Passionate about crafting scalable backend systems, solving complex problems, and building tech-driven solutions. With a solid grasp on cloud
+      technologies, modern web stacks, and system design, I help businesses go from idea to launch fast and efficiently.
+    </p>
+    <div class="mt-10 flex flex-col items-center gap-3 text-gray-300">
+      <p>📞 +91 9924814670 | +971 505381026</p>
+      <a href="mailto:hello@dharm.dev" class="flex items-center space-x-2 hover:text-cyan-300 transition text-cyan-400 text-lg font-semibold">
+        <i class="fa-solid fa-envelope"></i>
+        <span>hello@dharm.dev</span>
+      </a>
+      <div class="flex space-x-6 mt-4 text-3xl text-cyan-400 flex-wrap justify-center">
+        <a href="https://www.linkedin.com/in/dharmvachhani/" aria-label="LinkedIn" class="hover:text-cyan-300 transition"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://x.com/dharmvachhani" aria-label="Twitter" class="hover:text-cyan-300 transition"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://www.instagram.com/dharmvachhani" aria-label="Instagram" class="hover:text-cyan-300 transition"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 px-6 max-w-5xl mx-auto bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900 rounded-lg shadow-xl my-16 relative" data-aos="fade-up">
+  <div class="section-divider"></div>
+  <h2 class="text-4xl mb-8 text-center flex justify-center items-center gap-3">
+    <i class="fas fa-user-circle text-cyan-400"></i> About Me
+  </h2>
+  <p class="text-lg mb-4 leading-relaxed">
+    👋 I'm a <strong>Software Engineer</strong> with over <strong>5 years</strong> of experience building robust web applications and APIs. My core focus lies in
+    <strong>backend engineering</strong>, and I specialize in using Node.js, TypeScript, and cloud-native technologies to create efficient and scalable systems.
+  </p>
+  <p class="mb-4 leading-relaxed">
+    I have built and contributed to a variety of products in fintech, HRTech, and SaaS domains. Currently, I'm working at <strong>Avrioc Technologies</strong> (UAE) on a fintech
+    solution, <em>Comera Pay</em>. I also actively develop my own product, <em>FormBoost</em>, a form management and automation platform.
+  </p>
+  <p class="leading-relaxed">
+    Apart from coding, I enjoy mentoring junior developers, working in Agile teams, and continuously enhancing my knowledge of emerging technologies such as Web3, Blockchain,
+    and DevOps. I strive to design scalable, secure, and elegant software architectures.
+  </p>
+</section>
+
+<!-- Technical Expertise Section -->
+<section id="expertise" class="py-20 px-6 bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900 rounded-lg shadow-2xl max-w-6xl mx-auto my-20 relative" data-aos="fade-up">
+  <div class="section-divider"></div>
+  <h2
+    class="text-4xl mb-12 text-center flex justify-center items-center gap-3 select-none text-cyan-400"
+  >
+    <i class="fas fa-cogs"></i> 🛠️ Technical Expertise
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <div
+      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
+        <i class="fas fa-server"></i> Backend Development
+      </h3>
+      <p class="text-gray-400 text-lg">Node.js, Express.js, NestJS, REST, GraphQL, PHP, Laravel</p>
+    </div>
+    <div
+      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
+        <i class="fas fa-code"></i> Frontend Integration
+      </h3>
+      <p class="text-gray-400 text-lg">ReactJS, Next.js, Tailwind CSS, Responsive UI</p>
+    </div>
+    <div
+      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
+      data-aos="fade-up"
+      data-aos-delay="300"
+    >
+      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
+        <i class="fas fa-database"></i> Database Systems
+      </h3>
+      <p class="text-gray-400 text-lg">MySQL, PostgreSQL, MongoDB, MSSQL</p>
+    </div>
+    <div
+      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
+      data-aos="fade-up"
+      data-aos-delay="400"
+    >
+      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
+        <i class="fas fa-cloud"></i> Cloud & DevOps
+      </h3>
+      <p class="text-gray-400 text-lg">AWS, Docker, GitHub Actions</p>
+    </div>
+    <div
+      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
+      data-aos="fade-up"
+      data-aos-delay="500"
+    >
+      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
+        <i class="fas fa-project-diagram"></i> Architecture & Design
+      </h3>
+      <p class="text-gray-400 text-lg">Microservices, Scalable APIs, Serverless</p>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack & Tools Section -->
+<section id="techstack" class="py-20 px-6 bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900 rounded-lg shadow-2xl max-w-6xl mx-auto my-20" data-aos="fade-up">
+  <div class="section-divider"></div>
+  <h2 class="text-4xl mb-10 text-center text-purple-400 font-bold">Tech Stack & Tools</h2>
+  <div class="flex flex-wrap gap-10 justify-center text-5xl text-cyan-400 relative">
+    <i class="devicon-nodejs-plain colored tech-icon" data-name="Node.js"></i>
+    <i class="devicon-typescript-plain colored tech-icon" data-name="TypeScript"></i>
+    <i class="devicon-nestjs-plain colored tech-icon" data-name="NestJS"></i>
+    <i class="devicon-nextjs-plain colored tech-icon" data-name="Next.js"></i>
+    <i class="devicon-php-plain colored tech-icon" data-name="PHP"></i>
+    <i class="devicon-laravel-plain colored tech-icon" data-name="Laravel"></i>
+    <i class="devicon-codeigniter-plain colored tech-icon" data-name="CodeIgniter"></i>
+    <i class="devicon-react-original colored tech-icon" data-name="ReactJS"></i>
+    <i class="devicon-mysql-plain colored tech-icon" data-name="MySQL"></i>
+    <i class="devicon-postgresql-plain colored tech-icon" data-name="PostgreSQL"></i>
+    <i class="devicon-mongodb-plain colored tech-icon" data-name="MongoDB"></i>
+    <i class="devicon-microsoftsqlserver-plain colored tech-icon" data-name="MSSQL"></i>
+    <i class="devicon-graphql-plain colored tech-icon" data-name="GraphQL"></i>
+    <i class="devicon-docker-plain colored tech-icon" data-name="Docker"></i>
+    <i class="devicon-aws-plain-wordmark colored tech-icon" data-name="AWS"></i>
+  </div>
+</section>
+
+<!-- Contact Form Section -->
+<section id="contact" class="py-16 px-6 max-w-3xl mx-auto bg-gradient-to-tr from-gray-800 via-gray-700 to-gray-800 rounded-lg shadow-2xl my-20" data-aos="fade-up">
+  <h2 class="text-3xl font-bold text-purple-400 mb-6 text-center">Get in Touch</h2>
+  <form action="https://service.formboost.site/umZYWBEr" method="POST" class="space-y-6" novalidate>
+    <div>
+      <label for="name" class="block mb-2 text-gray-300 font-medium">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your full name"
+        required
+        class="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
+      />
+    </div>
+    <div>
+      <label for="email" class="block mb-2 text-gray-300 font-medium">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        required
+        class="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
+      />
+    </div>
+    <div>
+      <label for="message" class="block mb-2 text-gray-300 font-medium">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        placeholder="Write your message here..."
+        required
+        class="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition resize-none"
+      ></textarea>
+    </div>
+    <button
+      type="submit"
+      class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-md transition shadow-lg"
+    >
+      Send Message
+    </button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer class="py-6 bg-gray-950 text-center text-gray-400">
+  © 2025 <a href="https://dharm.dev" class="text-cyan-400 hover:underline font-semibold">dharm.dev</a> · Built with ❤️ using Node.js & Tailwind CSS
+</footer>
+
+<script>
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
+</script>
+
+</body>
+</html>
