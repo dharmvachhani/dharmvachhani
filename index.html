@@ -1,372 +1,1232 @@
+
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dharm Vachhani | Software Engineer</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      background: #0f172a;
-      color: #e0e7ff;
-      font-family: 'Inter', sans-serif;
-    }
-    /* Section Divider */
-    .section-divider {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: linear-gradient(90deg, #06b6d4 0%, #8b5cf6 50%, #06b6d4 100%);
-      clip-path: polygon(0 0, 100% 100%, 0 100%);
-      z-index: 0;
-    }
-    /* Section Titles */
-    h2 {
-      position: relative;
-      display: inline-block;
-      color: #8b5cf6;
-      font-weight: 700;
-    }
-    h2::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 60%;
-      height: 3px;
-      background: linear-gradient(90deg, #22d3ee, #8b5cf6);
-      border-radius: 5px;
-      transition: width 0.4s ease;
-    }
-    h2:hover::after {
-      width: 100%;
-    }
-    /* Tech Icon Tooltip */
-    .tech-icon {
-      position: relative;
-      cursor: pointer;
-    }
-    .tech-icon:hover::after {
-      content: attr(data-name);
-      position: absolute;
-      bottom: 120%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #8b5cf6;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 6px;
-      white-space: nowrap;
-      font-size: 0.875rem;
-      font-weight: 600;
-      pointer-events: none;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-    /* Hero Background Pulse */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, #22d3ee44, transparent 70%);
-      filter: blur(100px);
-      animation: pulse 6s ease-in-out infinite;
-      z-index: 0;
-    }
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 0.6;
-      }
-      50% {
-        opacity: 1;
-      }
-    }
-    /* Tech Card Hover */
-    .tech-card:hover {
-      box-shadow: 0 15px 30px #8b5cf6aa;
-      transform: translateY(-8px);
-    }
-    /* Button Hover */
-    button[type="submit"]:hover {
-      background: #7c3aed;
-      box-shadow: 0 0 15px #7c3aedcc;
-    }
-    /* Portfolio Cards */
-    .portfolio-card {
-      background: #1e293b;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 8px 20px #8b5cf6aa;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .portfolio-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px #22d3eecc;
-    }
-    /* Smooth fade + slide for AOS */
-    [data-aos].aos-animate {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    }
-    [data-aos] {
-      opacity: 0;
-      transform: translateY(20px);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dharm Vachhani - Software Engineer & Backend Specialist. Crafting scalable systems and tech-driven solutions.">
+    
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Dharm Vachhani | Software Engineer">
+    <meta property="og:description" content="Backend Specialist & AWS Certified Engineer. Building robust web applications and scalable APIs.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Dharm Vachhani | Software Engineer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+:root {
+  /* Color System - Dark Theme (Default) */
+  --bg-body: #0a0a0a;
+  --bg-surface: #111111;
+  --bg-surface-hover: #1a1a1a;
+  --text-primary: #ededed;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
+  --accent-primary: #3b82f6; /* Blue */
+  --accent-glow: rgba(59, 130, 246, 0.15);
+  --border-color: #27272a;
+  --border-hover: #3f3f46;
+  
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
 
-    /* Mobile Friendly Adjustments */
-    /* Hero text smaller on small devices */
-    @media (max-width: 640px) {
-      #hero h1 {
-        font-size: 2.5rem !important; /* Tailwind 5xl -> ~3rem, reducing */
-      }
-      #hero p {
-        font-size: 1rem !important;
-      }
-      #hero img {
-        width: 96px !important; /* 24rem */
-        height: 96px !important;
-      }
-    }
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-    /* Technical Expertise grid stacked on mobile */
-    @media (max-width: 768px) {
-      #expertise .grid {
-        grid-template-columns: 1fr !important;
-      }
-    }
+  /* Animation */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+}
 
-    /* Tech Stack icons smaller and wrap nicely */
-    #techstack .flex {
-      flex-wrap: wrap !important;
-      justify-content: center !important;
-      gap: 0.75rem !important;
-    }
-    #techstack .tech-icon {
-      font-size: 3rem !important; /* smaller on mobile */
-    }
-    @media (max-width: 640px) {
-      #techstack .tech-icon {
-        font-size: 2.25rem !important;
-      }
-    }
+[data-theme="light"] {
+  --bg-body: #ffffff;
+  --bg-surface: #f4f4f5;
+  --bg-surface-hover: #e4e4e7;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --accent-primary: #2563eb;
+  --accent-glow: rgba(37, 99, 235, 0.1);
+  --border-color: #e4e4e7;
+  --border-hover: #d4d4d8;
+}
 
-    /* Contact form inputs full width and spacing */
-    @media (max-width: 640px) {
-      #contact form input,
-      #contact form textarea,
-      #contact form button {
-        font-size: 1rem !important;
-      }
-      #contact form {
-        padding: 0 1rem !important;
-      }
-    }
-  </style>
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-body);
+  background-image: 
+    radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0),
+    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px, 80px 80px, 80px 80px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.06), transparent 80%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--accent-glow);
+  filter: blur(120px);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float 20s infinite alternate;
+}
+
+.blob-1 {
+  top: -100px;
+  right: -100px;
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.blob-2 {
+  bottom: -100px;
+  left: -100px;
+  background: rgba(37, 99, 235, 0.1);
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(100px, 50px) scale(1.1); }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: var(--space-md);
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background: var(--accent-primary);
+  border-radius: 2px;
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+  max-width: 65ch;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  color: var(--accent-primary);
+  font-size: 0.9rem;
+}
+
+/* Utilities */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  border-color: var(--border-color);
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.btn-outline:hover {
+  border-color: var(--text-primary);
+  background: var(--bg-surface);
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+}
+
+.logo span {
+  color: var(--accent-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 60px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-image: 
+    linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)),
+    url('/attached_assets/generated_images/abstract_dark_technology_circuit_background.png');
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* Floating Icons */
+.floating-icon {
+  position: absolute;
+  color: var(--accent-primary);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatIcon 6s ease-in-out infinite;
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.data-flow {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, var(--accent-primary), transparent);
+  opacity: 0.4;
+  animation: dataStream 3s linear infinite;
+}
+
+@keyframes dataStream {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  50% { opacity: 0.4; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Expanded Skills Section */
+.skills-full-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.skill-box {
+  background: rgba(20, 20, 20, 0.4);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.skill-box:hover {
+  border-color: var(--accent-primary);
+  background: rgba(30, 30, 30, 0.6);
+  transform: translateY(-5px);
+}
+
+.skill-box h3 {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.skill-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.skill-perc {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+}
+
+.skill-bar-bg {
+  height: 6px;
+  background: #222;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), #60a5fa);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  border-radius: 3px;
+  width: 0;
+  transition: width 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.hero-content {
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  margin-bottom: var(--space-sm);
+  font-size: 0.85rem;
+}
+
+.hero-title {
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 0 30px var(--accent-glow);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.social-icon:hover {
+  color: var(--accent-primary);
+  transform: translateY(-3px);
+}
+
+/* About Section */
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.highlight-item {
+  text-align: center;
+}
+
+.highlight-val {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+}
+
+.highlight-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Timeline Polish */
+.timeline-content {
+  border-left: 2px solid transparent;
+}
+
+.timeline-content:hover {
+  border-left-color: var(--accent-primary);
+  background: #161616;
+}
+
+/* Experience Timeline */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin-left: 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: var(--space-lg);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 11px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background: var(--bg-body);
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: var(--space-md);
+  border-radius: 8px;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.timeline-content:hover {
+  transform: translateX(5px);
+  border-color: var(--border-hover);
+}
+
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Projects Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.project-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: var(--space-md);
+  transition: all var(--transition-medium);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] .project-card:hover {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: var(--space-sm);
+}
+
+.folder-icon {
+  color: var(--accent-primary);
+  width: 40px;
+  height: 40px;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.project-links a {
+  color: var(--text-secondary);
+}
+
+.project-links a:hover {
+  color: var(--text-primary);
+}
+
+.project-tech {
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Contact */
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Footer */
+footer {
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+    </style>
 </head>
 <body>
 
-<!-- Hero Section -->
-<section id="hero" class="py-20 px-6 text-center relative overflow-hidden bg-gradient-to-br from-cyan-900 to-purple-900">
-  <div class="hero-bg"></div>
-  <div class="relative max-w-6xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-aos-duration="900">
-    <img
-      src="https://dharm.dev/pic.jpg"
-      alt="Dharm Avatar"
-      class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-cyan-400 shadow-lg"
-    />
-    <h1 id="hero-title" class="text-5xl md:text-6xl font-bold text-cyan-400 mb-2 drop-shadow-lg">Dharm Vachhani</h1>
-    <p class="text-xl text-gray-300 mb-6">Software Engineer | Backend Specialist | AWS Certified</p>
-    <p class="max-w-2xl mx-auto text-gray-300 leading-relaxed">
-      Passionate about crafting scalable backend systems, solving complex problems, and building tech-driven solutions. With a solid grasp on cloud
-      technologies, modern web stacks, and system design, I help businesses go from idea to launch fast and efficiently.
-    </p>
-    <div class="mt-10 flex flex-col items-center gap-3 text-gray-300">
-      <p>📞 +91 9924814670 | +971 505381026</p>
-      <a href="mailto:hello@dharm.dev" class="flex items-center space-x-2 hover:text-cyan-300 transition text-cyan-400 text-lg font-semibold">
-        <i class="fa-solid fa-envelope"></i>
-        <span>hello@dharm.dev</span>
-      </a>
-      <div class="flex space-x-6 mt-4 text-3xl text-cyan-400 flex-wrap justify-center">
-        <a href="https://www.linkedin.com/in/dharmvachhani/" aria-label="LinkedIn" class="hover:text-cyan-300 transition"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://x.com/dharmvachhani" aria-label="Twitter" class="hover:text-cyan-300 transition"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://www.instagram.com/dharmvachhani" aria-label="Instagram" class="hover:text-cyan-300 transition"><i class="fa-brands fa-instagram"></i></a>
-      </div>
+    <div class="bg-elements">
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
     </div>
-  </div>
-</section>
 
-<!-- About Section -->
-<section id="about" class="py-20 px-6 max-w-5xl mx-auto bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900 rounded-lg shadow-xl my-16 relative" data-aos="fade-up">
-  <div class="section-divider"></div>
-  <h2 class="text-4xl mb-8 text-center flex justify-center items-center gap-3">
-    <i class="fas fa-user-circle text-cyan-400"></i> About Me
-  </h2>
-  <p class="text-lg mb-4 leading-relaxed">
-    👋 I'm a <strong>Software Engineer</strong> with over <strong>5 years</strong> of experience building robust web applications and APIs. My core focus lies in
-    <strong>backend engineering</strong>, and I specialize in using Node.js, TypeScript, and cloud-native technologies to create efficient and scalable systems.
-  </p>
-  <p class="mb-4 leading-relaxed">
-    I have built and contributed to a variety of products in fintech, HRTech, and SaaS domains. Currently, I'm working at <strong>Avrioc Technologies</strong> (UAE) on a fintech
-    solution, <em>Comera Pay</em>. I also actively develop my own product, <em>FormBoost</em>, a form management and automation platform.
-  </p>
-  <p class="leading-relaxed">
-    Apart from coding, I enjoy mentoring junior developers, working in Agile teams, and continuously enhancing my knowledge of emerging technologies such as Web3, Blockchain,
-    and DevOps. I strive to design scalable, secure, and elegant software architectures.
-  </p>
-</section>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">dharm<span>.dev</span></a>
+            
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                <!-- Icon inserted by JS -->
+            </button>
+        </div>
+    </nav>
 
-<!-- Technical Expertise Section -->
-<section id="expertise" class="py-20 px-6 bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900 rounded-lg shadow-2xl max-w-6xl mx-auto my-20 relative" data-aos="fade-up">
-  <div class="section-divider"></div>
-  <h2
-    class="text-4xl mb-12 text-center flex justify-center items-center gap-3 select-none text-cyan-400"
-  >
-    <i class="fas fa-cogs"></i> 🛠️ Technical Expertise
-  </h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-    <div
-      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
-      data-aos="fade-up"
-      data-aos-delay="100"
-    >
-      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
-        <i class="fas fa-server"></i> Backend Development
-      </h3>
-      <p class="text-gray-400 text-lg">Node.js, Express.js, NestJS, REST, GraphQL, PHP, Laravel</p>
-    </div>
-    <div
-      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
-      data-aos="fade-up"
-      data-aos-delay="200"
-    >
-      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
-        <i class="fas fa-code"></i> Frontend Integration
-      </h3>
-      <p class="text-gray-400 text-lg">ReactJS, Next.js, Tailwind CSS, Responsive UI</p>
-    </div>
-    <div
-      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
-      data-aos="fade-up"
-      data-aos-delay="300"
-    >
-      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
-        <i class="fas fa-database"></i> Database Systems
-      </h3>
-      <p class="text-gray-400 text-lg">MySQL, PostgreSQL, MongoDB, MSSQL</p>
-    </div>
-    <div
-      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
-      data-aos="fade-up"
-      data-aos-delay="400"
-    >
-      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
-        <i class="fas fa-cloud"></i> Cloud & DevOps
-      </h3>
-      <p class="text-gray-400 text-lg">AWS, Docker, GitHub Actions</p>
-    </div>
-    <div
-      class="tech-card bg-gray-900 p-8 rounded-2xl shadow-lg transform transition duration-300"
-      data-aos="fade-up"
-      data-aos-delay="500"
-    >
-      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-cyan-300">
-        <i class="fas fa-project-diagram"></i> Architecture & Design
-      </h3>
-      <p class="text-gray-400 text-lg">Microservices, Scalable APIs, Serverless</p>
-    </div>
-  </div>
-</section>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="data-flow" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="data-flow" style="left: 30%; animation-delay: 1.5s;"></div>
+        <div class="data-flow" style="left: 70%; animation-delay: 0.5s;"></div>
+        <div class="data-flow" style="left: 90%; animation-delay: 2.2s;"></div>
+        
+        <!-- Floating Developer Elements -->
+        <div class="floating-icon" style="top: 20%; left: 15%; font-size: 2rem;">&lt;/&gt;</div>
+        <div class="floating-icon" style="top: 60%; left: 8%; font-size: 1.5rem; animation-delay: 1s;">if (idea)</div>
+        <div class="floating-icon" style="top: 15%; right: 12%; font-size: 1.8rem; animation-delay: 2s;"><i data-lucide="lightbulb"></i></div>
+        <div class="floating-icon" style="top: 70%; right: 15%; font-size: 2.2rem; animation-delay: 0.5s;">{ }</div>
+        <div class="floating-icon" style="bottom: 15%; left: 50%; font-size: 1.2rem; animation-delay: 1.5s;">else { execute }</div>
+        
+        <!-- More Software Development Elements -->
+        <div class="floating-icon" style="top: 40%; left: 25%; font-size: 1.2rem; animation-delay: 3s;">git commit -m "fix"</div>
+        <div class="floating-icon" style="top: 10%; left: 45%; font-size: 1.5rem; animation-delay: 4s;"><i data-lucide="database"></i></div>
+        <div class="floating-icon" style="bottom: 25%; right: 20%; font-size: 1.3rem; animation-delay: 2.5s;">const data = fetch()</div>
+        <div class="floating-icon" style="top: 50%; right: 5%; font-size: 1.8rem; animation-delay: 1.2s;"><i data-lucide="terminal"></i></div>
+        <div class="floating-icon" style="bottom: 40%; left: 5%; font-size: 1.4rem; animation-delay: 3.5s;">npm install</div>
+        <div class="floating-icon" style="top: 30%; right: 30%; font-size: 1.1rem; animation-delay: 0.8s;">Docker.build()</div>
+        <div class="floating-icon" style="bottom: 10%; right: 40%; font-size: 1.6rem; animation-delay: 5s;"><i data-lucide="box"></i></div>
+        
+        <div class="container hero-content">
+            <span class="hero-tag mono reveal">Software Engineer</span>
+            <h1 class="reveal hero-title" style="animation-delay: 0.1s">Dharm Vachhani</h1>
+            <p class="hero-subtitle reveal" style="animation-delay: 0.2s">
+                Backend Specialist | AWS Certified
+            </p>
+            <p class="reveal" style="animation-delay: 0.3s" style="max-width: 600px; margin: 0 auto;">
+                Passionate about crafting scalable backend systems, solving complex problems, and building tech-driven solutions.
+            </p>
+            
+            <div class="social-links reveal" style="animation-delay: 0.4s">
+                <a href="mailto:hello@dharm.dev" class="social-icon" aria-label="Email"><i data-lucide="mail"></i></a>
+                <a href="https://www.linkedin.com/in/dharmvachhani/" class="social-icon" target="_blank" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                <a href="https://x.com/dharmvachhani" class="social-icon" target="_blank" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="https://www.instagram.com/dharmvachhani" class="social-icon" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            </div>
+        </div>
+    </header>
 
-<!-- Tech Stack & Tools Section -->
-<section id="techstack" class="py-20 px-6 bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900 rounded-lg shadow-2xl max-w-6xl mx-auto my-20" data-aos="fade-up">
-  <div class="section-divider"></div>
-  <h2 class="text-4xl mb-10 text-center text-purple-400 font-bold">Tech Stack & Tools</h2>
-  <div class="flex flex-wrap gap-10 justify-center text-5xl text-cyan-400 relative">
-    <i class="devicon-nodejs-plain colored tech-icon" data-name="Node.js"></i>
-    <i class="devicon-typescript-plain colored tech-icon" data-name="TypeScript"></i>
-    <i class="devicon-nestjs-plain colored tech-icon" data-name="NestJS"></i>
-    <i class="devicon-nextjs-plain colored tech-icon" data-name="Next.js"></i>
-    <i class="devicon-php-plain colored tech-icon" data-name="PHP"></i>
-    <i class="devicon-laravel-plain colored tech-icon" data-name="Laravel"></i>
-    <i class="devicon-codeigniter-plain colored tech-icon" data-name="CodeIgniter"></i>
-    <i class="devicon-react-original colored tech-icon" data-name="ReactJS"></i>
-    <i class="devicon-mysql-plain colored tech-icon" data-name="MySQL"></i>
-    <i class="devicon-postgresql-plain colored tech-icon" data-name="PostgreSQL"></i>
-    <i class="devicon-mongodb-plain colored tech-icon" data-name="MongoDB"></i>
-    <i class="devicon-microsoftsqlserver-plain colored tech-icon" data-name="MSSQL"></i>
-    <i class="devicon-graphql-plain colored tech-icon" data-name="GraphQL"></i>
-    <i class="devicon-docker-plain colored tech-icon" data-name="Docker"></i>
-    <i class="devicon-aws-plain-wordmark colored tech-icon" data-name="AWS"></i>
-  </div>
-</section>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="reveal">About Me</h2>
+            
+            <div class="about-content reveal">
+                <div class="about-text">
+                    <p>👋 I'm <strong>Dharm Vachhani</strong>, a Software Engineer with a deep passion for architecting high-performance backend systems. With over <strong>5+ years</strong> of professional experience, I've dedicated my career to mastering the intricacies of scalable web applications and cloud-native infrastructures.</p>
+                    
+                    <p>My technical journey has taken me through diverse domains including <strong>Fintech, HRTech, and SaaS</strong>. I specialize in the <strong>Node.js ecosystem</strong>, leveraging TypeScript and NestJS to build resilient microservices that handle millions of requests. My expertise extends beyond just writing code; I am deeply involved in the entire software lifecycle—from initial system design and database modeling to cloud deployment and performance optimization.</p>
+                    
+                    <p>I believe that great software isn't just about functionality—it's about <strong>maintainability, security, and elegance</strong>. Whether it's optimizing complex GraphQL queries, orchestrating containerized environments with Kubernetes, or implementing real-time data streams, I strive for technical excellence in every project.</p>
+                    
+                    <p>Currently, I'm focusing on exploring the potential of <strong>Web3, Blockchain, and AI-driven backend automation</strong>, while continuously mentoring the next generation of engineers to build a better, more efficient digital future.</p>
+                </div>
 
-<!-- Contact Form Section -->
-<section id="contact" class="py-16 px-6 max-w-3xl mx-auto bg-gradient-to-tr from-gray-800 via-gray-700 to-gray-800 rounded-lg shadow-2xl my-20" data-aos="fade-up">
-  <h2 class="text-3xl font-bold text-purple-400 mb-6 text-center">Get in Touch</h2>
-  <form action="https://service.formboost.site/umZYWBEr" method="POST" class="space-y-6" novalidate>
-    <div>
-      <label for="name" class="block mb-2 text-gray-300 font-medium">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Your full name"
-        required
-        class="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
-      />
-    </div>
-    <div>
-      <label for="email" class="block mb-2 text-gray-300 font-medium">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="you@example.com"
-        required
-        class="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
-      />
-    </div>
-    <div>
-      <label for="message" class="block mb-2 text-gray-300 font-medium">Message</label>
-      <textarea
-        id="message"
-        name="message"
-        rows="4"
-        placeholder="Write your message here..."
-        required
-        class="w-full px-4 py-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition resize-none"
-      ></textarea>
-    </div>
-    <button
-      type="submit"
-      class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-md transition shadow-lg"
-    >
-      Send Message
-    </button>
-  </form>
-</section>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-val">5+</span>
+                        <span class="highlight-label">Years Experience</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-val">50+</span>
+                        <span class="highlight-label">Backend APIs Built</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-val">AWS</span>
+                        <span class="highlight-label">Certified</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-val">∞</span>
+                        <span class="highlight-label">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Footer -->
-<footer class="py-6 bg-gray-950 text-center text-gray-400">
-  © 2025 <a href="https://dharm.dev" class="text-cyan-400 hover:underline font-semibold">dharm.dev</a> · Built with ❤️
-</footer>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="reveal">Technical Arsenal</h2>
+            <div class="skills-full-grid reveal">
+                <!-- Backend -->
+                <div class="skill-box">
+                    <h3><i data-lucide="server"></i> Backend Engineering</h3>
+                    <div class="skill-list">
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">Node.js / NestJS</span><span class="skill-perc">95%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">GraphQL / Apollo</span><span class="skill-perc">90%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">Express / PHP / Laravel</span><span class="skill-perc">85%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
 
-<script>
-  AOS.init({
-    duration: 800,
-    once: true,
-  });
-</script>
+                <!-- Database -->
+                <div class="skill-box">
+                    <h3><i data-lucide="database"></i> Data & Storage</h3>
+                    <div class="skill-list">
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">PostgreSQL / MySQL</span><span class="skill-perc">88%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">MongoDB / Redis</span><span class="skill-perc">82%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 82%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">MSSQL / Database Design</span><span class="skill-perc">80%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%"></div></div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Infrastructure -->
+                <div class="skill-box">
+                    <h3><i data-lucide="cloud"></i> Cloud & DevOps</h3>
+                    <div class="skill-list">
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">AWS / CloudNative</span><span class="skill-perc">85%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">Docker / Kubernetes</span><span class="skill-perc">80%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">CI/CD / GitHub Actions</span><span class="skill-perc">82%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 82%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend & Integration -->
+                <div class="skill-box">
+                    <h3><i data-lucide="layout"></i> Frontend & Tools</h3>
+                    <div class="skill-list">
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">React / Next.js / TypeScript</span><span class="skill-perc">82%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 82%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">Tailwind CSS / Shadcn</span><span class="skill-perc">90%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">Socket.io / Web3</span><span class="skill-perc">75%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialized Tech -->
+                <div class="skill-box">
+                    <h3><i data-lucide="cpu"></i> Specialized Tech</h3>
+                    <div class="skill-list">
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">Microservices Architecture</span><span class="skill-perc">88%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">Serverless / Lambda</span><span class="skill-perc">85%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-entry">
+                            <div class="skill-info"><span class="skill-name">Elasticsearch / Kibana</span><span class="skill-perc">78%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 78%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="reveal">Experience</h2>
+            
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Feb 2025 - Present</span>
+                        <h3>Avrioc Technologies / Comera Pay (UAE)</h3>
+                        <p>Specializing in high-performance backend systems and cloud architecture. Leading technical initiatives for scalable fintech solutions using Node.js and NestJS.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Oct 2021 - Jan 2025</span>
+                        <h3>Alchemy Technologies Ltd</h3>
+                        <p>Senior Software Engineer specializing in GraphQL and REST API development. Led teams to deliver scalable Node.js/TypeScript solutions and orchestrated seamless software upgrades for enterprise clients.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Oct 2019 - Sep 2021</span>
+                        <h3>Rachana WebTech</h3>
+                        <p>Software Developer focused on full-stack development. Transitioned from PHP/Laravel to Node.js, implementing real-time features with Socket.io and building high-performance APIs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="reveal">Featured Work</h2>
+            
+            <div class="projects-grid reveal">
+                <div class="project-card">
+                    <div class="project-header">
+                        <i data-lucide="folder" class="folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3>Invex AI Engine</h3>
+                    <p>High-performance AI data processing engine. Architected AI-driven pipelines for real-time data ingestion and predictive analysis.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Node.js</span>
+                        <span>AI/ML</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <i data-lucide="folder" class="folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3>Travel Booking API</h3>
+                    <p>Enterprise-grade reservation system featuring real-time inventory management and secure multi-provider integrations.</p>
+                    <div class="project-tech">
+                        <span>NestJS</span>
+                        <span>PostgreSQL</span>
+                        <span>APIs</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <i data-lucide="folder" class="folder-icon"></i>
+                        <div class="project-links">
+                             <a href="#" target="_blank"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                    <h3>Formboost</h3>
+                    <p>SaaS platform for form management and automation, handling submissions with customizable logic and integrations.</p>
+                    <div class="project-tech">
+                        <span>SaaS</span>
+                        <span>Automation</span>
+                        <span>Full Stack</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <i data-lucide="folder" class="folder-icon"></i>
+                        <div class="project-links">
+                             <a href="#" target="_blank"><i data-lucide="github"></i></a>
+                        </div>
+                    </div>
+                    <h3>GraphQL Gateway</h3>
+                    <p>High-performance API gateway built during my time at Alchemy, optimizing data retrieval for distributed microservices.</p>
+                    <div class="project-tech">
+                        <span>GraphQL</span>
+                        <span>TypeScript</span>
+                        <span>Microservices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container contact-container reveal">
+            <h2>Get in Touch</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">
+                Have a project in mind or want to discuss backend technologies? Drop me a message!
+            </p>
+            
+            <form id="contact-form" method= 'POST' action='https://service.formboost.app/umZYWBEr'>
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name='name' class="form-input" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name='email' class="form-input" placeholder="hello@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name='message' class="form-textarea" placeholder="Your message..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 dharm.dev. Built with ❤️ By Dharm Vachhani</p>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15,
+        rootMargin: "0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    
+    // Check for saved theme preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        updateIcon(false);
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateIcon(true);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme === 'dark');
+    });
+
+    function updateIcon(isDark) {
+        if (isDark) {
+            themeToggleBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            `;
+        } else {
+            themeToggleBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            `;
+        }
+    }
+
+    // Active Navigation Link on Scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Mouse Follow Effect
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        document.body.style.setProperty('--mouse-x', `${x}%`);
+        document.body.style.setProperty('--mouse-y', `${y}%`);
+    });
+});
+    </script>
 </body>
 </html>
