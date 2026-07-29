@@ -61,7 +61,7 @@ Tools I rely on for CI/CD, infra, and shipping reliably:
 
 <p align="center">
   <img height="165" src="https://github-readme-stats.vercel.app/api?username=dharmvachhani&show_icons=true&theme=tokyonight&hide_border=true" />
-  <img height="165" src="https://github-readme-streak-stats.herokuapp.com/?user=dharmvachhani&theme=tokyonight&hide_border=true" />
+  <img height="165" src="https://streak-stats.demolab.com/?user=dharmvachhani&theme=tokyonight&hide_border=true" />
 </p>
 
 <p align="center">
